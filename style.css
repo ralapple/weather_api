@@ -7,6 +7,12 @@ html, body {
   line-height: 140%;
 
   
-  background-color: darkgray;
+  background-color: lightblue;
   
+}
+
+#footnote{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
