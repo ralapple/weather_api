@@ -60,7 +60,7 @@ pattern = "**/{*.js,*.jsx,*.ts,*.tsx,*.mjs,*.cjs}"
 requiredFiles = [".replit", "replit.nix", ".config"]
 
 [auth]
-pageEnabled = true
+pageEnabled = false
 buttonEnabled = false
 
 [languages.css]

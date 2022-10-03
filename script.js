@@ -31,9 +31,40 @@ document.getElementById('button').onclick = function() {
 function getWeather(lat, long) {
   console.log(lat)
   console.log(long)
-  
+  /*
   fetch('https://api.weather.gov/points/' + lat + ',' + long)
     .then(resp => resp.json())
     .then((json) => console.log(json))
+  */
+
+  fetch('https://api.weather.gov/points/' + lat + ',' + long)
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (data) {
+    //console.log(data)
+    console.log(data.properties.timeZone);
+  })
+  .catch(function (err) {
+    console.log(err);
+  });
+
+  fetch('https://api.weather.gov/gridpoints/MPX/108,71/forecast/hourly')
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (data1) {
+    var temp = data1.properties.periods[0].temperature
+    var forecast = data1.properties.periods[0].shortForecast
+    var windSpeed = data1.properties.periods[0].windSpeed
+    var windDirection = data1.properties.periods[0].windDirection
+    
+    document.getElementById('temp').innerHTML = "Temperature: " + temp
+    console.log(temp, forecast, windSpeed, windDirection)
+
+  })
+  .catch(function (err) {
+    console.log(err);
+  });
 
 }
