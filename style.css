@@ -49,6 +49,12 @@ html, body {
   left: 5px;
 }
 
+#location{
+  color: white;
+  font-size: 30px;
+  padding: 10px;
+}
+
 @media (min-width: 768px) {
   #button {
     padding: 0.25em 0.75em;

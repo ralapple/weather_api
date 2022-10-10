@@ -6,15 +6,7 @@ if (!navigator.geolocation) {
 }
 
 function onSuccess(position) {
-  const {
-    latitude,
-    longitude
-  } = position.coords
-  var lat = latitude
-  var long = longitude
-  document.getElementById('lat').innerHTML = "Latitude: " + lat
-  document.getElementById('long').innerHTML = "Longitude: " + long
-  getWeather(lat, long)
+  getWeather()
 }
 
 function onError() {
@@ -28,26 +20,24 @@ document.getElementById('button').onclick = function() {
 }
 
 
-function getWeather(lat, long) {
-  console.log(lat)
-  console.log(long)
-  /*
-  fetch('https://api.weather.gov/points/' + lat + ',' + long)
-    .then(resp => resp.json())
-    .then((json) => console.log(json))
-  */
+function getWeather() {
 
-  fetch('https://api.weather.gov/points/' + lat + ',' + long)
+  fetch('https://api.bigdatacloud.net/data/reverse-geocode-client')
   .then(function (response) {
     return response.json();
   })
   .then(function (data) {
     //console.log(data)
-    console.log(data.properties.timeZone);
+    console.log(data.city);
+    var city = data.city
+    var state = data.principalSubdivision
+    document.getElementById('location').innerHTML = city + ", " + state
   })
   .catch(function (err) {
     console.log(err);
   });
+  
+  
 
   fetch('https://api.weather.gov/gridpoints/MPX/108,71/forecast/hourly')
   .then(function (response) {
@@ -58,13 +48,17 @@ function getWeather(lat, long) {
     var forecast = data1.properties.periods[0].shortForecast
     var windSpeed = data1.properties.periods[0].windSpeed
     var windDirection = data1.properties.periods[0].windDirection
+
+    var str = temp +"F, "+ forecast + ", Wind:" + windSpeed + " " +windDirection
     
-    document.getElementById('temp').innerHTML = "Temperature: " + temp
+    document.getElementById('temp').innerHTML = str
     console.log(temp, forecast, windSpeed, windDirection)
 
   })
   .catch(function (err) {
     console.log(err);
   });
+
+
 
 }
