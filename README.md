@@ -1,6 +1,6 @@
 # Weather API Application
 Built by Raymond Lyon
-Basic weather application built to learn API's, API responses and how to manange the responses.
+Web based weather application built to learn restful API's, API responses and how to manange the responses.
 
 Phase 1: Create a basic application to learn how to fetch data from an API using Javascipt.
 Goals:
@@ -8,6 +8,7 @@ Goals:
 - Use the coordinates found to pull information about the weather using Weather.gov API
 - Read Json file to find the data wanted and store the data
 - Update web page to show the data recieved from the API at the users location
+- Utilized: Restuful API, Javascript, HTML/CSS, Git
 
 
 Phase 2: Show future forecast of the weather and allow to search locations
