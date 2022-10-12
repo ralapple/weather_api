@@ -1,9 +1,9 @@
-
-
-
 if (!navigator.geolocation) {
   console.error(`Your browser doesn't support Geolocation`);
 }
+
+
+navigator.geolocation.getCurrentPosition(onSuccess, onError)
 
 function onSuccess(position) {
   getWeather()
@@ -11,12 +11,6 @@ function onSuccess(position) {
 
 function onError() {
   console.log("Error")
-}
-
-//Watches for button press
-document.getElementById('button').onclick = function() {
-  console.log("Clicked")
-  navigator.geolocation.getCurrentPosition(onSuccess, onError)
 }
 
 
@@ -50,8 +44,11 @@ function getWeather() {
     var windDirection = data1.properties.periods[0].windDirection
 
     var str = temp +"F, "+ forecast + ", Wind:" + windSpeed + " " +windDirection
-    
-    document.getElementById('temp').innerHTML = str
+    if (str == null){
+      document.getElementById('temp').innerHTML = null
+    } else{
+         document.getElementById('temp').innerHTML = str
+    }
     console.log(temp, forecast, windSpeed, windDirection)
 
   })
