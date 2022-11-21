@@ -1,4 +1,4 @@
-# Weather API Application
+# Web-Based Weather API Application
 Built by Raymond Lyon
 Web based weather application built to learn restful API's, API responses and how to manange the responses.
 
